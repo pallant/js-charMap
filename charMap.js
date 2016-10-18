@@ -101,12 +101,9 @@ var charMap = {
         else {
             charMapCommon[char]++;
         }
-        console.log(charMapCommon);
-        console.log(JSON.stringify(charMapCommon));
 
         localStorage.setItem('charMapCommon', JSON.stringify(charMapCommon));
-        console.log("SET THE ITEM");
-        console.log(JSON.stringify(charMapCommon));
+
         if ( typeof this.opt.onClick == 'function' ) {
             this.opt.onClick(char);
         }
