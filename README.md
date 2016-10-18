@@ -6,17 +6,17 @@ Ultimately, styling is up to you, this only includes the most basic of styles fo
 The script is library agnostic (vanilla javascript), the decision was made to not minify or compile the script, as this should be done on build of your entire app. This allows for custom debugging and compiling procedures.
 
 ## Usage
-1. Include the javascript file in your app.
+#### 1. Include the javascript file in your app.
 ```html
 <script src="charMap.js"></script>
 ```
 
-2. Include the css in your app or write your own
+#### 2. Include the css in your app or write your own
 ```html
 <link rel="stylesheet" href="charMap.css" >
 ```
 
-2. Initialise the character map
+#### 3. Initialise the character map
 ```html
 <script>
 charMap.init({
