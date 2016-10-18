@@ -1,0 +1,39 @@
+#charMapContainer {
+    width: 50%;
+    font-family: Arial;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+}
+
+ul.charMapCategory {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    font-size: 25px;
+
+}
+
+ul.charMapCategory:before {
+    content: attr(data-category);
+    display: block;
+}
+
+ul.charMapCategory li {
+    width: 1.5em; height: 1.5em;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.5);
+    vertical-align: middle;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+ul.charMapCategory li:hover {
+    cursor: pointer;
+    background: rgba(50,100,255,0.5 );
+}

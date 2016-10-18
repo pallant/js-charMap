@@ -1,0 +1,23 @@
+{
+  "name": "character-map",
+  "version": "1.0.0",
+  "description": "JS Character map",
+  "main": "charMap.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pallant/js-charMap.git"
+  },
+  "keywords": [
+    "character",
+    "map"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pallant/js-charMap/issues"
+  },
+  "homepage": "https://github.com/pallant/js-charMap#readme"
+}
