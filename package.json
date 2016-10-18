@@ -1,6 +1,6 @@
 {
   "name": "character-map",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "JS Character map",
   "main": "charMap.js",
   "scripts": {
