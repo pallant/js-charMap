@@ -16,26 +16,7 @@ var charMap = {
             this.opt.commonality = 2;
         }
 
-        // Load in commonly used symbols in a common category
-        var charMapCommon = localStorage.getItem('charMapCommon');
-        if ( charMapCommon ) {
-            this.commonCategories = JSON.parse(charMapCommon);
-
-            var sortable = [];
-            for (var char in this.commonCategories) {
-                if ( this.commonCategories[char] >= this.opt.commonality ) {
-                    sortable.push({char: char, count: this.commonCategories[char]})
-                    sortable.sort(
-                        function(a, b) {
-                            return a.count - b.count
-                        }
-                    ).reverse();
-                }
-            }
-
-            this.categories.Common = sortable;
-        }
-
+        this.loadCommon();
 
         // Create the dialog element
         var container = document.createElement('div');
@@ -89,7 +70,66 @@ var charMap = {
         }
 
     },
+    loadCommon: function(){
+        // Load in commonly used symbols in a common category
+        var charMapCommon = localStorage.getItem('charMapCommon');
+        if ( charMapCommon ) {
+            this.commonCategories = JSON.parse(charMapCommon);
 
+            var sortable = [];
+            for (var char in this.commonCategories) {
+                if ( this.commonCategories[char] >= this.opt.commonality ) {
+                    sortable.push({char: char, count: this.commonCategories[char]})
+                    sortable.sort(
+                        function(a, b) {
+                            return a.count - b.count
+                        }
+                    ).reverse();
+                }
+            }
+
+            this.categories.Common = sortable;
+        }
+    },
+
+    updateCommon: function(){
+        var outputCommon = [];
+        var common = document.querySelector('.charMapCategory[data-category=Common]');
+        this.loadCommon();
+        if ( common ) {
+            common.innerHTML = '';
+            for ( var c = 0; c < this.categories.Common.length; ++c ) {
+                cat =  this.categories.Common[c];
+
+
+                if ( outputCommon.indexOf(cat.char) > -1 ) {
+                    continue;
+                }
+                outputCommon.push(cat.char);
+
+
+                li = document.createElement('li');
+                li.innerHTML = cat.char;
+                if ( cat.entity ) {
+                    li.innerHTML = cat.entity;
+                }
+
+                li.setAttribute('data-char', li.innerHTML);
+
+                if ( cat.name ) {
+                    li.setAttribute('data-name', cat.name);
+                }
+
+                if ( cat.entity ) {
+                    li.setAttribute('data-entity', cat.entity);
+                }
+
+                li.addEventListener('click', this.onClick.bind(this));
+
+                common.appendChild(li);
+            }
+        }
+    },
     onClick: function(event){
         var char = event.target.getAttribute('data-char');
         var charMapCommon = JSON.parse((localStorage.getItem('charMapCommon') || '{}'));
@@ -103,7 +143,7 @@ var charMap = {
         }
 
         localStorage.setItem('charMapCommon', JSON.stringify(charMapCommon));
-
+        this.updateCommon();
         if ( typeof this.opt.onClick == 'function' ) {
             this.opt.onClick(char);
         }
@@ -2531,6 +2571,6 @@ var charMap = {
     }
 };
 
-if ( typeof modules != 'undefined' ) {
-    modules.exports = charMap;
+if ( typeof module != 'undefined' ) {
+    module.exports = charMap;
 }
