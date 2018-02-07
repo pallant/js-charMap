@@ -1,4 +1,9 @@
+
+__DISCONTINUED__:
+This has been discontinued in favour of [this react component](https://github.com/pallant/react-character-map) based off of this. This can still be used, but it is unsupported.
+
 # js-charMap
+
 Character Map selector for UTF8 special characters.
 
 Ultimately, styling is up to you, this only includes the most basic of styles for the demo.
